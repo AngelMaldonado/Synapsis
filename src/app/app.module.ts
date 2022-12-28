@@ -3,11 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ViewComponent } from './view/view.component';
+import { AlgconfigComponent } from './algconfig/algconfig.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    ViewComponent,
+    AlgconfigComponent
   ],
   imports: [
     BrowserModule

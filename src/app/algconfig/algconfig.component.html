@@ -1,0 +1,60 @@
+<div class="accordion accordion-flush" id="algorithmConfigurations">
+  <div class="accordion-item">
+    <h2 class="accordion-header position-relative" id="headingOne">
+      <div class="btn-group position-absolute w-100 px-3 dropup" role="group" aria-label="Controls">
+        <button type="button" class="btn btn-success flex-grow-1">Start</button>
+        <button type="button" class="btn btn-danger flex-grow-1">Stop</button>
+        <button type="button" class="btn btn-secondary flex-grow-1">Pause</button>
+        <button type="button" class="btn btn-warning flex-grow-1"><<</button>
+        <button type="button" class="btn btn-warning flex-grow-1">>></button>
+        <button type="button"
+                class="btn btn-dark dropdown-toggle flex-grow-1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+        >
+          Speed
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark text-center">
+          <li><a class="dropdown-item" href="#">0.05x</a></li>
+          <li><a class="dropdown-item" href="#">0.5x</a></li>
+          <li><a class="dropdown-item" href="#">1.0x</a></li>
+          <li><a class="dropdown-item" href="#">1.5x</a></li>
+          <li><a class="dropdown-item" href="#">2.0x</a></li>
+        </ul>
+      </div>
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        Configurations
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#algorithmConfigurations">
+      <form class="accordion-body">
+        <h5>Algorithm</h5>
+        <div class="row mb-3">
+          <div class="col-lg-3">
+          <select class="form-select" aria-label="Algorithms list">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          </div>
+        </div>
+        <h5>Data options</h5>
+        <div class="row">
+          <div class="col-lg-6">
+            <label for="customRange1" class="form-label">Size</label>
+            <input type="range" class="form-range" id="customRange1">
+          </div>
+          <div class="col-lg-3">
+            <label for="customRange1" class="form-label">Min value</label>
+            <input type="range" class="form-range" id="customRange2">
+          </div>
+          <div class="col-lg-3">
+            <label for="customRange1" class="form-label">Max value</label>
+            <input type="range" class="form-range" id="customRange3">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
