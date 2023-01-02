@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import { Algorithm } from "../../algorithms/algorithm";
 
 @Component({
   selector: 'app-algconfig',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./algconfig.component.scss']
 })
 export class AlgconfigComponent implements OnInit {
-
+  @Input() algorithm: Algorithm | undefined;
   constructor() { }
 
   ngOnInit(): void {
