@@ -1,7 +1,7 @@
 import { Category } from "./category";
 
 export interface Algorithm {
-  name: string;
+  algorithm: string;
   category: Category;
 
   run(): void;
