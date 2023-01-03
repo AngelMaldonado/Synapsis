@@ -6,9 +6,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ViewComponent } from './components/view/view.component';
 import { AlgconfigComponent } from './components/algconfig/algconfig.component';
 import { RouterModule, Routes} from "@angular/router";
+import { FormsModule } from "@angular/forms";
 
 const routes: Routes = [
   { path: 'Arrays', component: ViewComponent },
+  { path: 'Graphs', component: ViewComponent },
+  { path: 'AI', component: ViewComponent },
 ];
 
 @NgModule({
@@ -20,7 +23,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   exports: [
     RouterModule
