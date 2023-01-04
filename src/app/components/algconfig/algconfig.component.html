@@ -44,26 +44,78 @@
     >
       <!-- Arrays Algorithms configurations -->
       <form class="accordion-body" *ngSwitchCase="0">
+        <!-- Algorithm configurations -->
         <div class="row mb-3">
-          <div class="col-lg-3">
+          <!-- Type -->
+          <div class="col-lg-3 mb-2">
             <h5>Type</h5>
-            <!-- TODO: 2 way - data binding to update second select -->
-            <select class="form-select" aria-label="Types list" [(ngModel)]="type" (ngModelChange)="setType()">
-              <option selected [value]="Sorting">🃏 Sorting</option>
-              <option [value]="Search">🔎 Search</option>
+            <select class="form-select"
+                    aria-label="Types list"
+                    name="Algorithm Type"
+                    [(ngModel)]="type"
+                    (ngModelChange)="onChange()"
+            >
+              <option selected value="Sorting">🃏 Sorting</option>
+              <option value="Search">🔎 Search</option>
             </select>
-          </div>
-          <div class="col-lg-3">
-            <h5>Algorithm</h5>
-            <select class="form-select" aria-label="Algorithms list">
-              <option selected value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
+          </div> <!-- Type -->
+          <!-- Algorithm -->
+          <div class="col-lg-3" [ngSwitch]="type">
+            <h5>{{ type }} Algorithm</h5>
+            <!-- Sorting select -->
+            <select class="form-select"
+                    aria-label="Algorithms list"
+                    *ngSwitchCase="'Sorting'"
+            >
+              <option selected value="Selection">Selection</option>
+              <option value="Bubble">Bubble</option>
+              <option value="Insertion">Insertion</option>
+              <option value="Merge">Merge</option>
+              <option value="Quick">Quick</option>
+              <option value="Heap">Heap</option>
+              <option value="Counting">Counting</option>
+              <option value="Radix">Radix</option>
+              <option value="Bucket">Bucket</option>
+              <option value="Bingo">Bingo</option>
+              <option value="Shell">Shell</option>
+              <option value="Tim">Tim</option>
+              <option value="Comb">Comb</option>
+              <option value="Pigeon">Pigeon</option>
+              <option value="Cycle">Cycle</option>
+              <option value="Cocktail">Cocktail</option>
+              <option value="Strand">Strand</option>
+              <option value="Bitonic">Bitonic</option>
+              <option value="Pancake">Pancake</option>
+              <option value="Bogo">Bogo</option>
+              <option value="Gnome">Gnome</option>
+              <option value="Sleep">Sleep</option>
+              <option value="Stooge">Stooge</option>
+              <option value="Tag">Tag</option>
+              <option value="Tree">Tree</option>
+              <option value="Odd-Even">Odd-Even</option>
+              <option value="3-way Merge">3-way Merge</option>
+            </select> <!-- Sorting select -->
+            <!-- Search select -->
+            <select class="form-select"
+                    aria-label="Algorithms list"
+                    *ngSwitchCase="'Search'"
+            >
+              <option selected value="Linear">Linear</option>
+              <option value="Sentinel">Sentinel</option>
+              <option value="Binary">Binary</option>
+              <option value="Meta Binary">Meta Binary</option>
+              <option value="Ternary">Ternary</option>
+              <option value="Jump">Jump</option>
+              <option value="Interpolation">Interpolation</option>
+              <option value="Exponential">Exponential</option>
+              <option value="Fibonacci">Fibonacci</option>
+              <option value="Obiquitous Binary">Obiquitous Binary</option>
+            </select> <!-- Search select -->
+          </div> <!-- Algorithm -->
         </div>
-        <h5>Data options</h5>
+        <!-- Data configurations -->
         <div class="row">
+          <h5>Data options</h5>
           <div class="col-lg-6">
             <label for="customRange1" class="form-label">Size</label>
             <input type="range" class="form-range" id="customRange1">

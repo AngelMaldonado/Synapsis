@@ -1,3 +1,6 @@
+/**
+ * TODO: Set default type string based on url user selection
+ */
 import { Component, Input } from '@angular/core';
 import { Category } from "../../algorithms/category";
 
@@ -9,7 +12,8 @@ import { Category } from "../../algorithms/category";
 
 export class AlgconfigComponent {
   @Input() category: Category | undefined;
-  type: string | undefined;
+
+  type: string = "Sorting";
 
   constructor() {
   }
@@ -17,20 +21,24 @@ export class AlgconfigComponent {
   ngOnInit(): void {
   }
 
-  setType() {
-    const types = document.querySelector('[aria-label="Types list"]') as HTMLSelectElement;
-    const type = types.options[types.selectedIndex].value;
-    switch(this.category) {
-      case Category.Arrays:
-        switch(type) {
-          case "Sorting":
-            break;
-          case "Search":
-            break;
-          default:
-            break;
-        }
-        break;
-    }
+  onChange() {
+    console.log(this.type);
   }
+
+  // setType() {
+  //   const types = document.querySelector('[aria-label="Types list"]') as HTMLSelectElement;
+  //   const type = types.options[types.selectedIndex].value;
+  //   switch(this.category) {
+  //     case Category.Arrays:
+  //       switch(type) {
+  //         case "Sorting":
+  //           break;
+  //         case "Search":
+  //           break;
+  //         default:
+  //           break;
+  //       }
+  //       break;
+  //   }
+  // }
 }
