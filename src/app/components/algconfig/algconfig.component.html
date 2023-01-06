@@ -1,3 +1,5 @@
+<!-- TODO: When setting min array value at its limit and decreasing max min doesn't update -->
+
 <div class="accordion accordion-flush" id="algorithmConfigurations">
   <div class="accordion-item">
     <h2 class="accordion-header position-relative" id="headingOne">
@@ -53,7 +55,6 @@
                     aria-label="Types list"
                     name="Algorithm Type"
                     [(ngModel)]="type"
-                    (ngModelChange)="onChange()"
             >
               <option selected value="Sorting">🃏 Sorting</option>
               <option value="Search">🔎 Search</option>
@@ -116,17 +117,50 @@
         <!-- Data configurations -->
         <div class="row">
           <h5>Data options</h5>
+          <!-- Array Size -->
           <div class="col-lg-6">
-            <label for="customRange1" class="form-label">Size</label>
-            <input type="range" class="form-range" id="customRange1">
-          </div>
+            <label for="ArraySize" class="form-label">Size {{ arrayDataConfig.n_size_array }}</label>
+            <input type="range"
+                   class="form-range"
+                   id="ArraySize"
+                   name="ArraySize"
+                   [min]="0"
+                   [max]="1000"
+                   [size]="1000"
+                   [(ngModel)]="arrayDataConfig.n_size_array"
+            >
+          </div> <!-- Array Size -->
+          <!-- Min Array Value -->
           <div class="col-lg-3">
-            <label for="customRange1" class="form-label">Min value</label>
-            <input type="range" class="form-range" id="customRange2">
-          </div>
+            <label for="MinValue" class="form-label">Min value {{ arrayDataConfig.min }}</label>
+            <input type="range"
+                   class="form-range"
+                   id="MinValue"
+                   name="MinValue"
+                   [min]="0"
+                   [max]="arrayDataConfig.max-1"
+                   [(ngModel)]="arrayDataConfig.min"
+            >
+          </div> <!-- Min Array Value -->
+          <!-- Max Array Value -->
           <div class="col-lg-3">
-            <label for="customRange1" class="form-label">Max value</label>
-            <input type="range" class="form-range" id="customRange3">
+            <label for="MaxValue" class="form-label">Max value {{ arrayDataConfig.max }}</label>
+            <input type="range"
+                   class="form-range"
+                   id="MaxValue"
+                   name="MaxValue"
+                   [min]="10"
+                   [max]="100"
+                   [(ngModel)]="arrayDataConfig.max"
+            >
+          </div> <!-- Max Array Value -->
+          <!-- Update/Generate Array -->
+          <div class="col-lg-3 mt-2">
+            <button class="w-100 btn btn-primary"
+                    (click)="generateArray()"
+            >
+              Generate Array
+            </button>
           </div>
         </div>
       </form> <!-- Arrays Algorithms configurations -->

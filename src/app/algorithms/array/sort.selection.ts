@@ -1,20 +1,11 @@
-import { Algorithm } from "../algorithm";
-import { Category } from "../category";
+import { ArraySortingAlgorithm } from "./array.sorting";
 
-class SortSelection implements Algorithm{
-  algorithm: string;
-  category: Category;
-  n_size_array: number;
-  data: Array<number>;
-
-  constructor(n_size_array: number, data: Array<number>) {
-    this.category = Category.Arrays;
-    this.algorithm = "Selection Sort";
-    this.n_size_array = n_size_array;
-    this.data = data;
+export class SortSelection extends ArraySortingAlgorithm {
+  constructor(n_size_array: number, max: number, min: number) {
+    super(n_size_array, max, min);
   }
 
-  run(): void {
+  override run(): void {
     for(let i = 0; i < this.data.length - 1; i++)
     {
       let min = i;
