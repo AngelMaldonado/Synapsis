@@ -1,8 +1,8 @@
 import { ArraySortingAlgorithm } from "./array.sorting";
 
 export class SortSelection extends ArraySortingAlgorithm {
-  constructor(n_size_array: number, max: number, min: number) {
-    super(n_size_array, max, min);
+  constructor(arrayDataConfig: {n_size_array: number, min: number, max: number}) {
+    super(arrayDataConfig);
   }
 
   override run(): void {

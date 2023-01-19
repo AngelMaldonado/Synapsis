@@ -124,9 +124,8 @@
                    class="form-range"
                    id="ArraySize"
                    name="ArraySize"
-                   [min]="0"
-                   [max]="1000"
-                   [size]="1000"
+                   [min]="algconfigComponent.ARRAY_MIN"
+                   [max]="algconfigComponent.ARRAY_MAX"
                    [(ngModel)]="arrayDataConfig.n_size_array"
             >
           </div> <!-- Array Size -->
@@ -137,7 +136,7 @@
                    class="form-range"
                    id="MinValue"
                    name="MinValue"
-                   [min]="0"
+                   [min]="algconfigComponent.ARRAY_VAL_MIN"
                    [max]="arrayDataConfig.max-1"
                    [(ngModel)]="arrayDataConfig.min"
             >
@@ -150,7 +149,7 @@
                    id="MaxValue"
                    name="MaxValue"
                    [min]="10"
-                   [max]="100"
+                   [max]="algconfigComponent.ARRAY_VAL_MAX"
                    [(ngModel)]="arrayDataConfig.max"
             >
           </div> <!-- Max Array Value -->
