@@ -33,6 +33,15 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "es6-promise-polyfill",
+              "object-assign",
+              "url",
+              "mini-signals",
+              "parse-uri",
+              "eventemitter3",
+              "earcut"
             ]
           },
           "configurations": {

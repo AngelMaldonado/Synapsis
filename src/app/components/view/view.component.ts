@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {Category} from "../../algorithms/category";
+import * as PIXI from 'pixi.js';
 
 @Component({
   selector: 'app-view',
@@ -9,6 +10,9 @@ import {Category} from "../../algorithms/category";
 })
 export class ViewComponent implements OnInit {
   currentCategory: Category = Category.Arrays;
+
+  @ViewChild('pixi') pixi: any;
+  pixiApp: any;
 
   constructor(private router: Router) {
     this.router.events.subscribe(change => {
@@ -31,6 +35,24 @@ export class ViewComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
+    console.log(PIXI.VERSION);
+    this.pixiApp = new PIXI.Application({
+      width: 400,
+      height: 56,
+      backgroundColor: 0x2980b9
+    });
+    this.pixi.nativeElement.appendChild(this.pixiApp.view);
+    this.pixiApp.loader.load(() => this.onAssetsLoaded())
+  }
+
+  onAssetsLoaded() {
+    const basicText = new PIXI.Text('Some text here');
+    basicText.x = 5;
+    basicText.y = 5;
+    this.pixiApp.stage.addChild(basicText);
   }
 }
