@@ -21,7 +21,7 @@
     "bootstrap": "^5.2.3",
     "earcut": "^2.2.4",
     "eventemitter3": "^5.0.0",
-    "pixi.js": "6.5.8",
+    "pixi.js": "5.3.12",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
