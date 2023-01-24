@@ -16,8 +16,8 @@ export class ViewComponent implements OnInit {
 
   constructor(private router: Router) {
     this.router.events.subscribe(change => {
-      if(change instanceof NavigationEnd) {
-        switch(change['url']) {
+      if (change instanceof NavigationEnd) {
+        switch (change['url']) {
           case "/Arrays":
             this.currentCategory = Category.Arrays;
             break;
@@ -38,15 +38,22 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
   }
 
+  /** TODO: update pixi on div resizing **/
   ngAfterViewInit(): void {
     console.log(PIXI.VERSION);
     this.pixiApp = new PIXI.Application({
-      width: 400,
-      height: 56,
+      width: this.pixi.nativeElement.offsetWidth - 100,
+      height: this.pixi.nativeElement.offsetHeight - 100,
       backgroundColor: 0x2980b9
     });
     this.pixi.nativeElement.appendChild(this.pixiApp.view);
-    this.pixiApp.loader.load(() => this.onAssetsLoaded())
+    this.pixiApp.loader.load(() => this.onAssetsLoaded());
+
+
+    const observer = new ResizeObserver(entries => {
+      console.log(entries);
+    });
+    observer.observe(this.pixi.nativeElement);
   }
 
   onAssetsLoaded() {
