@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {Category} from "../../algorithms/category";
-import * as PIXI from 'pixi.js';
+import {Application, Text} from 'pixi.js';
 
 @Component({
   selector: 'app-view',
@@ -13,8 +13,9 @@ export class ViewComponent implements OnInit {
 
   @ViewChild('pixi') pixi: any;
   pixiApp: any;
+  pixiResizeObserver: ResizeObserver | undefined;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private zone: NgZone) {
     this.router.events.subscribe(change => {
       if (change instanceof NavigationEnd) {
         switch (change['url']) {
@@ -38,26 +39,33 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
   }
 
-  /** TODO: update pixi on div resizing **/
+  ngOnDestroy() {
+    this.pixiResizeObserver?.unobserve(this.pixi.nativeElement);
+  }
+
   ngAfterViewInit(): void {
-    console.log(PIXI.VERSION);
-    this.pixiApp = new PIXI.Application({
-      width: this.pixi.nativeElement.offsetWidth - 100,
-      height: this.pixi.nativeElement.offsetHeight - 100,
+    this.pixiApp = new Application({
+      width: this.pixi.nativeElement.offsetWidth,
+      height: this.pixi.nativeElement.offsetHeight,
       backgroundColor: 0x2980b9
     });
     this.pixi.nativeElement.appendChild(this.pixiApp.view);
     this.pixiApp.loader.load(() => this.onAssetsLoaded());
 
-
-    const observer = new ResizeObserver(entries => {
-      console.log(entries);
+    this.pixiResizeObserver = new ResizeObserver(entry => {
+      this.zone.run(() => {
+        const pixiParentDiv = entry[0];
+        this.pixiApp.renderer.resize(
+          pixiParentDiv.contentRect.width,
+          pixiParentDiv.contentRect.height
+        );
+      });
     });
-    observer.observe(this.pixi.nativeElement);
+    this.pixiResizeObserver.observe(this.pixi.nativeElement);
   }
 
   onAssetsLoaded() {
-    const basicText = new PIXI.Text('Some text here');
+    const basicText = new Text('Some text here');
     basicText.x = 5;
     basicText.y = 5;
     this.pixiApp.stage.addChild(basicText);
